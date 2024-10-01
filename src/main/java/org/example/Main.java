@@ -27,6 +27,8 @@ public class Main {
         //  sc.useDelimiter("[,\\r\\n]+");
         // Text files in windows have lines ending with "CR-LF" or "\r\n" sequences.
         // or may have only a newline - "\n"
+        // Windows uses CRLF (\r\n, 0D 0A) line endings while Unix just uses LF (\n, 0A).
+        //
         try (Scanner sc = new Scanner(new File("studentDataCSV.csv"))
                 .useDelimiter("[,\\r\\n]+"))
         {
