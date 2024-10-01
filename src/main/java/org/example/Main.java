@@ -45,6 +45,12 @@ public class Main {
                 double height = sc.nextDouble();    // read height and convert to double
                 double gpa = sc.nextDouble();
 
+                // Note that the above methods  will throw exceptions if there is a
+                // problem with the input values.
+                // InputMismatchException - if the next token does not match type specified, or is out of range
+                // NoSuchElementException - if the input is exhausted (i.e. no more data when we expected it)
+
+
                 // Print out the row of field values using format specifiers
                 System.out.printf("%-20s %5d %5.2f %5.2f %n",name,age,height,gpa);
             }
