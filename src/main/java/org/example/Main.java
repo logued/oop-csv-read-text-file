@@ -23,21 +23,25 @@ public class Main {
         // Name,Age,Height(m),GPA  - these heading names are included as the first row in file
         // Ali G,20,1.78,3.55   for example
 
-        try (Scanner sc = new Scanner(new File("studentDataCSV.csv")))
+        // Use a Regular Expression to set both comma and newline as delimiters.
+        //  sc.useDelimiter("[,\\r\\n]+");
+        // Text files in windows have lines ending with "CR-LF" or "\r\n" sequences.
+        // or may have only a newline - "\n"
+        try (Scanner sc = new Scanner(new File("studentDataCSV.csv"))
+                .useDelimiter("[,\\r\\n]+"))
         {
+
+            // skip past the first line, as it has field names (not data)
             if(sc.hasNextLine())
                sc.nextLine();   // read the header line containing column titles, but don't use it
 
-            // read one line at a time into a String, and parse the String into tokens (parts)
-            while (sc.hasNextLine())
+            // while there is a next token to read....
+            while (sc.hasNext())
             {
-                String line = sc.nextLine();             // read full line ( delimited by a "\n" )
-                String [] tokens = line.split(",");  // split line using a comma as the delimiter (separator)
-
-                String name = tokens[0];  // extract first token/field from the tokens array (i.e. the name)
-                int age = Integer.parseInt(tokens[1]);  // e.g. Convert String "19" to int value 19
-                double height = Double.parseDouble(tokens[2]);  // e.g. Convert String "1.82" to double 1.82
-                double gpa = Double.parseDouble(tokens[3]);
+                String name = sc.next();    // read name
+                int age = sc.nextInt();     // read age and convert into int
+                double height = sc.nextDouble();    // read height and convert to double
+                double gpa = sc.nextDouble();
 
                 // Print out the row of field values using format specifiers
                 System.out.printf("%-20s %5d %5.2f %5.2f %n",name,age,height,gpa);
