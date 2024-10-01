@@ -21,7 +21,7 @@ public class Main {
 
         // Format of each row of data is:
         // Name,Age,Height(m),GPA  - these heading names are included as the first row in file
-        // Ali G,20,1.78,3.55   for example
+        // John Malone,20,1.78,3.55   for example
 
         // Use a Regular Expression to set both comma and newline as delimiters.
         //  sc.useDelimiter("[,\\r\\n]+");
